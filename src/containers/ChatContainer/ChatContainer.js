@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import { v4 } from "uuid";
 
 import { Chats, Chat, SearchChat } from "../../components";
 import * as actions from "./actions";
 import "./styles.css";
 
 const ChatContainer = (props) => {
-  const { chats, changeChat, isChatting, selectedChatId, sendMessage } = props;
+  const { chats, sendMessage } = props;
   const [searchChatValue, setSearchChatValue] = useState("");
+  const [selectedChatId, setSelectedChatId] = useState("");
 
   const chooseChat = (userId) => {
-    changeChat(userId);
+    setSelectedChatId(userId);
   };
 
   const handleSearch = (event) => {
@@ -34,12 +34,9 @@ const ChatContainer = (props) => {
     searchedMessages = null;
   }
 
-  console.log(searchedMessages);
-
-  const currentChat =
-    chats.filter((chat) => {
-      return chat.userId === selectedChatId;
-    })[0] ?? null;
+  const currentChat = chats.filter((chat) => {
+    return chat.userId === selectedChatId;
+  })[0];
 
   return (
     <div class="main">
@@ -56,7 +53,6 @@ const ChatContainer = (props) => {
       </div>
       <div class="right-side">
         <Chat
-          isChatting={isChatting}
           selectedChatId={selectedChatId}
           messageHistory={currentChat?.messageHistory}
           chat={currentChat || null}
@@ -71,7 +67,6 @@ const mapStateToProps = (state) => {
   return {
     chats: state.chat.chats,
     selectedChatId: state.chat.selectedChatId,
-    isChatting: state.chat.isChatting,
   };
 };
 

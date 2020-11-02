@@ -3,16 +3,9 @@ import moment from "moment";
 
 import { SendMessage } from "../index";
 import "./styles.css";
-import { sendMessage } from "../../containers/ChatContainer/actions";
 
 const Chat = (props) => {
-  const {
-    isChatting,
-    chat,
-    sendMessage,
-    selectedChatId,
-    messageHistory,
-  } = props;
+  const { chat, sendMessage, selectedChatId, messageHistory } = props;
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -53,7 +46,7 @@ const Chat = (props) => {
   const chatHistory = chat.messageHistory.map((message, index) => {
     if (message.isAuthor) {
       return (
-        <div class="chat-history__message_self">
+        <div class="chat-history__message_self" key={message.messageId}>
           <div class="chat-history__message-photo_self"></div>
           <div class="chat-history__message-wrapper">
             <div class="chat-history__message-text_self">
@@ -70,7 +63,7 @@ const Chat = (props) => {
       );
     } else {
       return (
-        <div class="chat-history__message">
+        <div class="chat-history__message" key={message.messageId}>
           <div
             class="chat-history__message-photo"
             style={{ backgroundImage: `url(${chat.userImg})` }}

@@ -1,5 +1,4 @@
 import {
-  GET_RANDOM_JOKE_SUCCESS,
   CHANGE_CHAT,
   SEND_MESSAGE_SUCCESS,
   GET_RANDOM_ANSWER_SUCCESS,
@@ -59,17 +58,10 @@ const initialState = {
     },
   ],
   isChatting: false,
-  selectedChatId: "",
 };
 
 const chatReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case GET_RANDOM_JOKE_SUCCESS: {
-      return {
-        ...state,
-        joke: payload.joke,
-      };
-    }
     case CHANGE_CHAT: {
       return {
         ...state,
@@ -116,7 +108,6 @@ const chatReducer = (state = initialState, { type, payload }) => {
           messageHistory: [...chat.messageHistory, newMessage],
         };
       });
-      console.log(payload);
       return {
         ...state,
         chats: newChats,

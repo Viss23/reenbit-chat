@@ -1,5 +1,3 @@
-import { getRandomJoke } from "../containers/ChatContainer/actions";
-
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);

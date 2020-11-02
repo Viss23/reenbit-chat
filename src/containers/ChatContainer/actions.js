@@ -1,10 +1,4 @@
-import { GET_RANDOM_JOKE, CHANGE_CHAT, SEND_MESSAGE } from "./actionTypes";
-
-export const getRandomJoke = () => {
-  return {
-    type: GET_RANDOM_JOKE,
-  };
-};
+import { CHANGE_CHAT, SEND_MESSAGE } from "./actionTypes";
 
 export const changeChat = (userId) => {
   return {

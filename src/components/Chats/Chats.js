@@ -16,7 +16,11 @@ const Chats = (props) => {
     ? searchedMessages.map((chat) => {
         return chat.messageHistory.map((message) => {
           return (
-            <div class="chats__dialog" onClick={() => chooseChat(chat.userId)}>
+            <div
+              class="chats__dialog"
+              onClick={() => chooseChat(chat.userId)}
+              key={chat.userId}
+            >
               <div
                 class="dialog__photo"
                 style={{ backgroundImage: `url(${chat.userImg})` }}
@@ -37,7 +41,11 @@ const Chats = (props) => {
     : sortedChatsByTime.map((chat) => {
         const lastMessage = chat.messageHistory.length - 1;
         return (
-          <div class="chats__dialog" onClick={() => chooseChat(chat.userId)}>
+          <div
+            class="chats__dialog"
+            onClick={() => chooseChat(chat.userId)}
+            key={chat.userId}
+          >
             <div
               class="dialog__photo"
               style={{ backgroundImage: `url(${chat.userImg})` }}
