@@ -1,7 +1,15 @@
-import { GET_RANDOM_JOKE } from "./actionTypes";
+import { CHANGE_CHAT, SEND_MESSAGE } from "./actionTypes";
 
-export const getRandomJoke = () => {
+export const changeChat = (userId) => {
   return {
-    type: GET_RANDOM_JOKE,
+    type: CHANGE_CHAT,
+    payload: { userId },
+  };
+};
+
+export const sendMessage = (userId, message) => {
+  return {
+    type: SEND_MESSAGE,
+    payload: { userId, message },
   };
 };

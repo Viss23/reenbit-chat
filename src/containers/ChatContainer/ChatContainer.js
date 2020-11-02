@@ -1,25 +1,72 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 
-import { Chats, Chat, SearchChat, SendMessage } from "../../components";
+import { Chats, Chat, SearchChat } from "../../components";
 import * as actions from "./actions";
+import "./styles.css";
 
 const ChatContainer = (props) => {
-  const { getRandomJoke, joke } = props;
+  const { chats, sendMessage } = props;
+  const [searchChatValue, setSearchChatValue] = useState("");
+  const [selectedChatId, setSelectedChatId] = useState("");
+
+  const chooseChat = (userId) => {
+    setSelectedChatId(userId);
+  };
+
+  const handleSearch = (event) => {
+    setSearchChatValue(event.target.value);
+  };
+
+  let searchedMessages;
+
+  if (searchChatValue) {
+    searchedMessages = chats.map((chat) => {
+      const filteredMessageHistory = chat.messageHistory.filter((message) => {
+        return message.text.includes(searchChatValue);
+      });
+      return {
+        ...chat,
+        messageHistory: filteredMessageHistory,
+      };
+    });
+  } else {
+    searchedMessages = null;
+  }
+
+  const currentChat = chats.filter((chat) => {
+    return chat.userId === selectedChatId;
+  })[0];
 
   return (
-    <div>
-      <p>chat container</p>
-      <button onClick={getRandomJoke}> get joke</button>
-      <p>{joke}</p>
+    <div class="main">
+      <div class="left-side">
+        <SearchChat
+          handleSearch={handleSearch}
+          searchChatValue={searchChatValue}
+        />
+        <Chats
+          chats={chats}
+          chooseChat={chooseChat}
+          searchedMessages={searchedMessages}
+        />
+      </div>
+      <div class="right-side">
+        <Chat
+          selectedChatId={selectedChatId}
+          messageHistory={currentChat?.messageHistory}
+          chat={currentChat || null}
+          sendMessage={sendMessage}
+        />
+      </div>
     </div>
   );
 };
 
 const mapStateToProps = (state) => {
   return {
-    id: state.chat.id,
-    joke: state.chat.joke,
+    chats: state.chat.chats,
+    selectedChatId: state.chat.selectedChatId,
   };
 };
 
