@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "bd15a91102b41cfa3d0d911e2029e1f0",
+    "revision": "8227a8706f67287fe75a9572ed2eff3f",
     "url": "/reenbit-chat/index.html"
   },
   {
-    "revision": "1317f4bc1f3eff3f9d03",
+    "revision": "4c7f05aeeeac2c8127b5",
     "url": "/reenbit-chat/static/css/main.a6785663.chunk.css"
   },
   {
-    "revision": "5b7d52c4a3572c5604fb",
-    "url": "/reenbit-chat/static/js/2.377a397c.chunk.js"
+    "revision": "98cf9b2bc5b1ef1afd29",
+    "url": "/reenbit-chat/static/js/2.ff455030.chunk.js"
   },
   {
     "revision": "de2613ebce8a261be82fa7c04c15983a",
-    "url": "/reenbit-chat/static/js/2.377a397c.chunk.js.LICENSE.txt"
+    "url": "/reenbit-chat/static/js/2.ff455030.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1317f4bc1f3eff3f9d03",
-    "url": "/reenbit-chat/static/js/main.c04af353.chunk.js"
+    "revision": "4c7f05aeeeac2c8127b5",
+    "url": "/reenbit-chat/static/js/main.9bb41ef0.chunk.js"
   },
   {
     "revision": "8ffbb37bf7bcda0fbb7e",

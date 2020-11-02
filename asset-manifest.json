@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/reenbit-chat/static/css/main.a6785663.chunk.css",
-    "main.js": "/reenbit-chat/static/js/main.c04af353.chunk.js",
-    "main.js.map": "/reenbit-chat/static/js/main.c04af353.chunk.js.map",
+    "main.js": "/reenbit-chat/static/js/main.9bb41ef0.chunk.js",
+    "main.js.map": "/reenbit-chat/static/js/main.9bb41ef0.chunk.js.map",
     "runtime-main.js": "/reenbit-chat/static/js/runtime-main.f633c381.js",
     "runtime-main.js.map": "/reenbit-chat/static/js/runtime-main.f633c381.js.map",
-    "static/js/2.377a397c.chunk.js": "/reenbit-chat/static/js/2.377a397c.chunk.js",
-    "static/js/2.377a397c.chunk.js.map": "/reenbit-chat/static/js/2.377a397c.chunk.js.map",
+    "static/js/2.ff455030.chunk.js": "/reenbit-chat/static/js/2.ff455030.chunk.js",
+    "static/js/2.ff455030.chunk.js.map": "/reenbit-chat/static/js/2.ff455030.chunk.js.map",
     "index.html": "/reenbit-chat/index.html",
-    "precache-manifest.a844c5db1153058190904ac4a4e4205e.js": "/reenbit-chat/precache-manifest.a844c5db1153058190904ac4a4e4205e.js",
+    "precache-manifest.2b36942711f1467d74465905980e6b09.js": "/reenbit-chat/precache-manifest.2b36942711f1467d74465905980e6b09.js",
     "service-worker.js": "/reenbit-chat/service-worker.js",
     "static/css/main.a6785663.chunk.css.map": "/reenbit-chat/static/css/main.a6785663.chunk.css.map",
-    "static/js/2.377a397c.chunk.js.LICENSE.txt": "/reenbit-chat/static/js/2.377a397c.chunk.js.LICENSE.txt",
+    "static/js/2.ff455030.chunk.js.LICENSE.txt": "/reenbit-chat/static/js/2.ff455030.chunk.js.LICENSE.txt",
     "static/media/styles.css": "/reenbit-chat/static/media/send-message-6-663814.f3f2d5f5.png"
   },
   "entrypoints": [
     "static/js/runtime-main.f633c381.js",
-    "static/js/2.377a397c.chunk.js",
+    "static/js/2.ff455030.chunk.js",
     "static/css/main.a6785663.chunk.css",
-    "static/js/main.c04af353.chunk.js"
+    "static/js/main.9bb41ef0.chunk.js"
   ]
 }

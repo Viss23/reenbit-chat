@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/reenbit-chat/precache-manifest.a844c5db1153058190904ac4a4e4205e.js"
+  "/reenbit-chat/precache-manifest.2b36942711f1467d74465905980e6b09.js"
 );
 
 self.addEventListener('message', (event) => {
