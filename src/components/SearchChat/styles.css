@@ -1,0 +1,36 @@
+.search-chat {
+  background-color: #F5F5F5;
+  border: 1px solid #e9e6e6;
+  border-left: none;
+}
+
+.search-chat__my-photo {
+  width: 48px;
+  height: 48px;
+  background-image: url(https://chdi.ru/wp-content/uploads/default-user-image.png);
+  border-radius: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 20px;
+}
+
+.search-chat__panel {
+  width: 100%;
+}
+
+.search-chat__input {
+  border: 1px solid #aca7a7;
+  border-radius: 5px;
+  background-image: url(../../images/search.png);
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  background-position: 8px 8px;
+  background-color: #fff;
+  padding: 6px 30px 6px 30px;
+  width: 70%;
+  margin: 10px;
+}
+
+.search-chat__input:focus {
+  outline: none;
+}
