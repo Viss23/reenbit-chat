@@ -19,6 +19,7 @@ const ChatContainer = (props) => {
   };
 
   let searchedMessages;
+  let searchedUsers;
 
   if (searchChatValue) {
     searchedMessages = chats.map((chat) => {
@@ -30,8 +31,12 @@ const ChatContainer = (props) => {
         messageHistory: filteredMessageHistory,
       };
     });
+    searchedUsers = chats.filter((chat) =>
+      chat.username.includes(searchChatValue)
+    );
   } else {
     searchedMessages = null;
+    searchedUsers = null;
   }
 
   const currentChat = chats.filter((chat) => {
@@ -49,6 +54,7 @@ const ChatContainer = (props) => {
           chats={chats}
           chooseChat={chooseChat}
           searchedMessages={searchedMessages}
+          searchedUsers={searchedUsers}
         />
       </div>
       <div class="right-side">
