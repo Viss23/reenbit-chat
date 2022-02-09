@@ -10,9 +10,9 @@ const ChatContainer = (props) => {
   const [searchChatValue, setSearchChatValue] = useState("");
   const [selectedChatId, setSelectedChatId] = useState("");
 
-  const chooseChat = (userId) => {
+  const chooseChat = useCallback((userId) => {
     setSelectedChatId(userId);
-  };
+  }, []);
 
   const handleSearch = useCallback((event) => {
     setSearchChatValue(event.target.value);
