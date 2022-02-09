@@ -20,9 +20,9 @@ const SendMessage = (props) => {
 
   return (
     <div>
-      <div class="send-message__panel">
+      <div className="send-message__panel">
         <textarea
-          class="send-message__input"
+          className="send-message__input"
           placeholder="Type your message"
           value={message}
           onChange={handleChange}

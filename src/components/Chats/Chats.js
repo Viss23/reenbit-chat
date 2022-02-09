@@ -19,23 +19,23 @@ const Chats = (props) => {
       const lastMessage = chat.messageHistory.length - 1;
       return (
         <div
-          class="chats__dialog"
+          className="chats__dialog"
           onClick={() => chooseChat(chat.userId)}
           key={chat.userId}
         >
           <div
-            class="dialog__photo"
+            className="dialog__photo"
             style={{ backgroundImage: `url(${chat.userImg})` }}
           ></div>
-          <div class="dialog__name-message">
-            <div class="dialog__name">{chat.username}</div>
-            <div class="dialog__message">
+          <div className="dialog__name-message">
+            <div className="dialog__name">{chat.username}</div>
+            <div className="dialog__message">
               {`${chat.messageHistory[lastMessage].isAuthor ? "You: " : ""}${
                 chat.messageHistory[lastMessage].text
               }`}
             </div>
           </div>
-          <div class="dialog__date">
+          <div className="dialog__date">
             <span>
               {moment(chat.messageHistory[lastMessage].date).format(
                 "MMM D,YYYY"
@@ -54,21 +54,21 @@ const Chats = (props) => {
       return chat.messageHistory.map((message) => {
         return (
           <div
-            class="chats__dialog"
+            className="chats__dialog"
             onClick={() => chooseChat(chat.userId)}
-            key={chat.userId}
+            key={message.messageId}
           >
             <div
-              class="dialog__photo"
+              className="dialog__photo"
               style={{ backgroundImage: `url(${chat.userImg})` }}
             ></div>
-            <div class="dialog__name-message">
-              <div class="dialog__name">{chat.username}</div>
-              <div class="dialog__message">
+            <div className="dialog__name-message">
+              <div className="dialog__name">{chat.username}</div>
+              <div className="dialog__message">
                 {`${message.isAuthor ? "You: " : ""}${message.text}`}
               </div>
             </div>
-            <div class="dialog__date">
+            <div className="dialog__date">
               <span>{moment(message.date).format("MMM D,YYYY")}</span>
             </div>
           </div>
@@ -84,23 +84,23 @@ const Chats = (props) => {
       const lastMessage = chat.messageHistory.length - 1;
       return (
         <div
-          class="chats__dialog"
+          className="chats__dialog"
           onClick={() => chooseChat(chat.userId)}
           key={chat.userId}
         >
           <div
-            class="dialog__photo"
+            className="dialog__photo"
             style={{ backgroundImage: `url(${chat.userImg})` }}
           ></div>
-          <div class="dialog__name-message">
-            <div class="dialog__name">{chat.username}</div>
-            <div class="dialog__message">
+          <div className="dialog__name-message">
+            <div className="dialog__name">{chat.username}</div>
+            <div className="dialog__message">
               {`${chat.messageHistory[lastMessage].isAuthor ? "You: " : ""}${
                 chat.messageHistory[lastMessage].text
               }`}
             </div>
           </div>
-          <div class="dialog__date">
+          <div className="dialog__date">
             <span>
               {moment(chat.messageHistory[lastMessage].date).format(
                 "MMM D,YYYY"
@@ -113,8 +113,8 @@ const Chats = (props) => {
   }
 
   return (
-    <div class="chats">
-      <div class="chats__header">
+    <div className="chats">
+      <div className="chats__header">
         <span>Chats</span>
       </div>
       {chatsList}
