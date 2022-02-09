@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { connect } from "react-redux";
 
 import { Chats, Chat, SearchChat } from "../../components";
@@ -14,9 +14,9 @@ const ChatContainer = (props) => {
     setSelectedChatId(userId);
   };
 
-  const handleSearch = (event) => {
+  const handleSearch = useCallback((event) => {
     setSearchChatValue(event.target.value);
-  };
+  }, []);
 
   let searchedMessages;
   let searchedUsers;
@@ -44,8 +44,8 @@ const ChatContainer = (props) => {
   })[0];
 
   return (
-    <div class="main">
-      <div class="left-side">
+    <div className="main">
+      <div className="left-side">
         <SearchChat
           handleSearch={handleSearch}
           searchChatValue={searchChatValue}
@@ -57,7 +57,7 @@ const ChatContainer = (props) => {
           searchedUsers={searchedUsers}
         />
       </div>
-      <div class="right-side">
+      <div className="right-side">
         <Chat
           selectedChatId={selectedChatId}
           messageHistory={currentChat?.messageHistory}

@@ -5,13 +5,13 @@ import "./styles.css";
 const SearchChat = (props) => {
   const { handleSearch, searchChatValue } = props;
   return (
-    <div class="search-chat">
-      <div class="search-chat__my-photo"></div>
-      <div class="search-chat__panel">
+    <div className="search-chat">
+      <div className="search-chat__my-photo"></div>
+      <div className="search-chat__panel">
         <input
           type="text"
           placeholder="Search or start new chat"
-          class="search-chat__input"
+          className="search-chat__input"
           value={searchChatValue}
           onChange={(event) => handleSearch(event)}
         ></input>
@@ -20,4 +20,4 @@ const SearchChat = (props) => {
   );
 };
 
-export default SearchChat;
+export default React.memo(SearchChat);
