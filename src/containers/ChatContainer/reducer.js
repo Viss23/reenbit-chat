@@ -1,8 +1,4 @@
-import {
-  CHANGE_CHAT,
-  SEND_MESSAGE_SUCCESS,
-  GET_RANDOM_ANSWER_SUCCESS,
-} from "./actionTypes";
+/* import { CHANGE_CHAT, SEND_MESSAGE_SUCCESS, GET_RANDOM_ANSWER_SUCCESS } from "./actionTypes";
 
 import { v4 } from "uuid";
 
@@ -55,6 +51,13 @@ const initialState = {
           date: "2020-10-01T20:21:27.413Z",
         },
       ],
+    },
+    {
+      userId: "5",
+      userImg:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Donald_Trump_official_portrait.jpg/1200px-Donald_Trump_official_portrait.jpg",
+      username: "123",
+      messageHistory: [],
     },
   ],
   isChatting: false,
@@ -119,3 +122,4 @@ const chatReducer = (state = initialState, { type, payload }) => {
 };
 
 export default chatReducer;
+ */

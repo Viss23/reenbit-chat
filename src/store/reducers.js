@@ -1,7 +1,9 @@
 import { combineReducers } from "redux";
 
-import chatReducer from "../containers/ChatContainer/reducer";
+import chatsReducer from "../containers/ChatContainer/chatSlice";
+import loginReducer from "../containers/LoginContainer/loginSlice";
 
 export default combineReducers({
-  chat: chatReducer,
+  chats: chatsReducer,
+  currentUser: loginReducer,
 });

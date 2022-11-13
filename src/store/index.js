@@ -1,9 +1,10 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import createSagaMiddleware from "redux-saga";
-import reducers from "./reducers";
-import { rootSaga } from "./sagas";
+import thunk from "redux-thunk";
+import reducer from "./reducers";
+import chatMiddleware from "../containers/ChatContainer/chatMiddleware";
 
-const saga = createSagaMiddleware();
+import { configureStore } from "@reduxjs/toolkit";
 
 const persistedState = localStorage.getItem("reduxState")
   ? JSON.parse(localStorage.getItem("reduxState"))
@@ -14,14 +15,16 @@ const composeEnhancers =
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
     : compose;
 
-const enhancer = composeEnhancers(applyMiddleware(saga));
+const enhancer = composeEnhancers(applyMiddleware(thunk));
 
-const store = createStore(reducers, persistedState, enhancer);
-
-store.subscribe(() => {
-  localStorage.setItem("reduxState", JSON.stringify(store.getState()));
+const store = configureStore({
+  reducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(chatMiddleware),
 });
+//const store = createStore(reducers, persistedState, enhancer);
 
-saga.run(rootSaga);
+/* store.subscribe(() => {
+  localStorage.setItem("reduxState", JSON.stringify(store.getState()));
+}); */
 
 export default store;

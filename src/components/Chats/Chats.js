@@ -4,43 +4,54 @@ import moment from "moment";
 import "./styles.css";
 
 const Chats = (props) => {
-  const { chats, chooseChat, searchedMessages, searchedUsers } = props;
+  const { chats, chooseChat, searchedMessages, searchedUsers, currentUserId, users } = props;
 
-  const sortedChatsByTime = Array.from(chats).sort((a, b) =>
-    b.messageHistory[b.messageHistory.length - 1].date.localeCompare(
-      a.messageHistory[a.messageHistory.length - 1].date
-    )
-  );
+  const sortedChatsByTime = Array.from(chats).sort((a, b) => {
+    a.message[a.message.length - 1].sentDate.localeCompare(
+      b.message[b.message.length - 1].sentDate
+    );
+  });
 
   let searchedUsersList;
 
   if (searchedUsers) {
     searchedUsersList = searchedUsers.map((chat) => {
-      const lastMessage = chat.messageHistory.length - 1;
+      const lastMessage = chat.messages.length - 1;
       return (
-        <div
-          className="chats__dialog"
-          onClick={() => chooseChat(chat.userId)}
-          key={chat.userId}
-        >
-          <div
-            className="dialog__photo"
-            style={{ backgroundImage: `url(${chat.userImg})` }}
-          ></div>
+        <div className="chats__dialog" onClick={() => chooseChat(chat.id)} key={chat.id}>
+          <div className="dialog__photo" style={{ backgroundImage: `url(${chat.userImg})` }}></div>
           <div className="dialog__name-message">
-            <div className="dialog__name">{chat.username}</div>
+            <div className="dialog__name">{chat.name}</div>
             <div className="dialog__message">
-              {`${chat.messageHistory[lastMessage].isAuthor ? "You: " : ""}${
-                chat.messageHistory[lastMessage].text
+              {`${chat.messages[lastMessage].author.id === currentUserId ? "You: " : ""}${
+                chat.messages[lastMessage].text
               }`}
             </div>
           </div>
           <div className="dialog__date">
-            <span>
-              {moment(chat.messageHistory[lastMessage].date).format(
-                "MMM D,YYYY"
-              )}
-            </span>
+            <span>{moment(chat.messages[lastMessage].date).format("MMM D,YYYY")}</span>
+          </div>
+        </div>
+      );
+    });
+  }
+
+  const excludeUsers = chats.map((chat) => chat.users.map(({ id }) => id)).flat();
+  const newContacts = users.filter(({ id }) => {
+    return !excludeUsers.includes(id);
+  });
+
+  let newContactsList;
+
+  if (newContacts) {
+    newContactsList = newContacts.map((user) => {
+      return (
+        <div
+          className="chats__dialog"
+          /*  onClick={() => chooseChat(chat.userId)} */
+          key={user.userId}>
+          <div className="dialog__name-message">
+            <div className="dialog__name">{user.username}</div>
           </div>
         </div>
       );
@@ -51,21 +62,19 @@ const Chats = (props) => {
 
   if (searchedMessages) {
     searchedMessagesList = searchedMessages.map((chat) => {
-      return chat.messageHistory.map((message) => {
+      return chat.messages.map((message) => {
         return (
           <div
             className="chats__dialog"
             onClick={() => chooseChat(chat.userId)}
-            key={message.messageId}
-          >
+            key={message.messageId}>
             <div
               className="dialog__photo"
-              style={{ backgroundImage: `url(${chat.userImg})` }}
-            ></div>
+              style={{ backgroundImage: `url(${chat.userImg})` }}></div>
             <div className="dialog__name-message">
               <div className="dialog__name">{chat.username}</div>
               <div className="dialog__message">
-                {`${message.isAuthor ? "You: " : ""}${message.text}`}
+                {`${message.author.id === currentUserId ? "You: " : ""}${message.text}`}
               </div>
             </div>
             <div className="dialog__date">
@@ -81,31 +90,24 @@ const Chats = (props) => {
 
   if (!searchedMessages && !searchedUsers) {
     chatsList = sortedChatsByTime.map((chat) => {
-      const lastMessage = chat.messageHistory.length - 1;
+      const recipientId = chat.users.filter(({ id }) => id !== currentUserId)[0].id;
+      const recipient = users.find((user) => user.id === recipientId);
+      const lastMessage = chat.messages.length - 1;
       return (
-        <div
-          className="chats__dialog"
-          onClick={() => chooseChat(chat.userId)}
-          key={chat.userId}
-        >
+        <div className="chats__dialog" onClick={() => chooseChat(chat.id)} key={chat.id}>
           <div
             className="dialog__photo"
-            style={{ backgroundImage: `url(${chat.userImg})` }}
-          ></div>
+            style={{ backgroundColor: recipient?.isOnline ? "green" : "red" }}></div>
           <div className="dialog__name-message">
-            <div className="dialog__name">{chat.username}</div>
+            <div className="dialog__name">{recipient?.username} </div>
             <div className="dialog__message">
-              {`${chat.messageHistory[lastMessage].isAuthor ? "You: " : ""}${
-                chat.messageHistory[lastMessage].text
+              {`${chat.messages[lastMessage].id === currentUserId ? "You: " : ""}${
+                chat.messages[lastMessage].text
               }`}
             </div>
           </div>
           <div className="dialog__date">
-            <span>
-              {moment(chat.messageHistory[lastMessage].date).format(
-                "MMM D,YYYY"
-              )}
-            </span>
+            <span>{moment(chat.messages[lastMessage].date).format("MMM D,YYYY")}</span>
           </div>
         </div>
       );
@@ -122,6 +124,10 @@ const Chats = (props) => {
       {searchedUsersList}
       {!!searchedMessagesList && <p>Messages:</p>}
       {searchedMessagesList}
+      <div className="chats__header">
+        <span>New Contacts</span>
+        {newContactsList}
+      </div>
     </div>
   );
 };

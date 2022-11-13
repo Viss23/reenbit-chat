@@ -1,18 +1,23 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { chatActions } from "../../containers/ChatContainer/chatSlice";
 
 import "./styles.css";
 
 const SendMessage = (props) => {
-  const { sendMessage, userId } = props;
+  const { sendMessage, chatId } = props;
+  const currentUserId = useSelector((state) => state.currentUser.id);
+  const dispatch = useDispatch();
   const [message, setMessage] = useState();
 
   const handleChange = (event) => {
     setMessage(event.target.value);
+    dispatch(chatActions.typing({ userId: currentUserId, chatId }));
   };
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
-      sendMessage(userId, message);
+      sendMessage(chatId, message);
       setMessage("");
       event.preventDefault();
     }
@@ -26,8 +31,7 @@ const SendMessage = (props) => {
           placeholder="Type your message"
           value={message}
           onChange={handleChange}
-          onKeyDown={handleKeyDown}
-        ></textarea>
+          onKeyDown={handleKeyDown}></textarea>
       </div>
     </div>
   );

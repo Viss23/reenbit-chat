@@ -7,11 +7,22 @@
 
 .left-side {
   width: 35%;
+
 }
 
 .right-side {
   width: 65%;
   height: 100%;
+  position:relative;
+}
+
+.logout {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px 12px;
+  border-radius: 9px;
+  border: 1px solid #aca7a7;
 }
 
 @media (max-width: 600px) {
@@ -43,3 +54,4 @@
     width: 1200px;
   }
 }
+
